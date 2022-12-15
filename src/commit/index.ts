@@ -1,8 +1,6 @@
-// 用户交互询问
-import { exec } from "child_process"
 import inquirer from "inquirer"
-import { stdout } from "process"
-import { logTask, logResults, logSuccess, logError } from "../utils/log"
+import { logTask, logResults, logError } from "../utils/log"
+import { runCmd } from "../utils/cmd"
 
 const commitTypes = {
     "✨ feat: New feature": "feat :sparkles: ",
@@ -76,15 +74,7 @@ export const updateCommit = async () => {
     ])
 
     if (verify) {
-        exec(`git commit -m "${commit}"`, (error, stdout) => {
-            if (!!error) {
-                logError(JSON.stringify(error))
-                return
-            }
-
-            console.log(stdout)
-            logSuccess("Commit", "Now you can run 'git push' to push commits!")
-        })
+        runCmd("git", ["commit", "-m", commit])
     } else {
         logError("Canceled by user!")
     }
