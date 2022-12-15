@@ -1,0 +1,28 @@
+{
+  "name": "developer-helper-cli",
+  "version": "1.0.0",
+  "description": "Developer Helper Cli Tool",
+  "type": "module",
+  "main": "bin/index.js",
+  "bin": {
+    "dhc": "bin/index.js"
+  },
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/inquirer": "^8.2.5",
+    "@types/node": "^18.11.13",
+    "tsup": "^6.5.0"
+  },
+  "dependencies": {
+    "chalk-pipe": "^6.0.0",
+    "commander": "^9.4.1",
+    "inquirer": "^9.1.4"
+  }
+}
