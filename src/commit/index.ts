@@ -77,7 +77,7 @@ export const updateCommit = async () => {
 
     if (verify) {
         exec(`git commit -m "${commit}"`, (error, stdout) => {
-            if (!error) {
+            if (!!error) {
                 logError(JSON.stringify(error))
                 return
             }
