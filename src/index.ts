@@ -4,6 +4,7 @@ import { version, description } from "../package.json"
 import { updateCommit } from "./commit"
 import { checkLocalEnv } from "./local"
 import { createNewProject } from "./create"
+import { runStaticServer } from "./serve"
 
 program.name("dhc").description(description).version(version)
 
@@ -29,6 +30,13 @@ program
     .description("create new project")
     .action(() => {
         createNewProject()
+    })
+
+program
+    .command("serve [p]")
+    .description("create new static service")
+    .action((p: string) => {
+        runStaticServer(p)
     })
 
 // 统一开发的 dev 和 build 命令
