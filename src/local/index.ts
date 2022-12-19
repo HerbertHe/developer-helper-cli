@@ -22,6 +22,12 @@ const Versions = {
 	git: [
 		["git", "--version"]
 	],
+	docker: [
+		["docker", "-v"]
+	],
+	julia: [
+		["julia", "-v"]
+	]
 	// vscode: [
 	// 	["code", "-v"]
 	// ],

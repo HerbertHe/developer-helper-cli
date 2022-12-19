@@ -5,6 +5,7 @@ import { updateCommit } from "./commit"
 import { checkLocalEnv } from "./local"
 import { createNewProject } from "./create"
 import { runStaticServer } from "./serve"
+import { generateDocs } from "./docs"
 
 program.name("dhc").description(description).version(version)
 
@@ -37,6 +38,13 @@ program
     .description("create new static service")
     .action((p: string) => {
         runStaticServer(p)
+    })
+
+program
+    .command("docs")
+    .description("create new docs project powered by vitepress")
+    .action(() => {
+        generateDocs()
     })
 
 // 统一开发的 dev 和 build 命令
