@@ -14,7 +14,7 @@ But, maybe I need a new cli tool for me with frontend development.
 ## Usage
 
 ```bash
-# install as gloal dependence
+# install as global dependence
 npm install -g developer-helper-cli
 
 # run `dhc help` command in terminal for help
