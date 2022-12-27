@@ -2,6 +2,8 @@ import inquirer from "inquirer"
 import { logTask } from "../utils/log"
 import { runCmd } from "../utils/cmd"
 
+// TODO 修复间断输出的问题
+
 export const createNewProject = async () => {
     const { type } = await inquirer.prompt([
         {

@@ -6,6 +6,7 @@ import { checkLocalEnv } from "./local"
 import { createNewProject } from "./create"
 import { runStaticServer } from "./serve"
 import { generateDocs } from "./docs"
+import { run } from "./run"
 
 program.name("dhc").description(description).version(version)
 
@@ -48,11 +49,36 @@ program
     })
 
 // 统一开发的 dev 和 build 命令
-program.command("dev").description("run dev")
+program
+    .command("dev")
+    .description("run dev")
+    .action(() => {
+        run("dev")
+    })
 
-program.command("build").description("run build")
+program
+    .command("build")
+    .description("run build")
+    .action(() => {
+        run("build")
+    })
 
-program.command("add").description("run add")
+program
+    .command("test")
+    .description("run test")
+    .action(() => {
+        run("test")
+    })
 
-program.command("install").description("run install")
+// program.command("add").description("run add").action(() => {
+//     run("add")
+// })
+
+program
+    .command("install")
+    .description("run install")
+    .action(() => {
+        run("install")
+    })
+
 program.parse()
