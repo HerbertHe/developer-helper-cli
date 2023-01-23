@@ -11,6 +11,7 @@ const Versions = {
 	],
 	python: [
 		["python", "--version"],
+		["conda", "-V"]
 	],
 	go: [
 		["go", "version"]
