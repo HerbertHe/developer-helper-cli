@@ -1,3 +1,4 @@
+// TODO 需要被移除
 import chalkPipe from "chalk-pipe"
 
 export const logTask = (text: string) => console.log(chalkPipe("magentaBright")(text))

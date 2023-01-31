@@ -28,7 +28,10 @@ const Versions = {
 	],
 	julia: [
 		["julia", "-v"]
-	]
+	],
+	arduino: [
+		["arduino-cli", "version"]
+	],
 	// vscode: [
 	// 	["code", "-v"]
 	// ],

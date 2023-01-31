@@ -27,48 +27,48 @@ program
     })
 
 // 新建项目工程
-program
-    .command("create")
-    .description("create new project")
-    .action(() => {
-        createNewProject()
-    })
+// program
+//     .command("create")
+//     .description("create new project")
+//     .action(() => {
+//         createNewProject()
+//     })
 
-program
-    .command("serve [p]")
-    .description("create new static service")
-    .action((p: string) => {
-        runStaticServer(p)
-    })
+// program
+//     .command("serve [p]")
+//     .description("create new static service")
+//     .action((p: string) => {
+//         runStaticServer(p)
+//     })
 
-program
-    .command("docs")
-    .description("create new docs project powered by vitepress")
-    .action(() => {
-        generateDocs()
-    })
+// program
+//     .command("docs")
+//     .description("create new docs project powered by vitepress")
+//     .action(() => {
+//         generateDocs()
+//     })
 
-// 统一开发的 dev 和 build 命令
-program
-    .command("dev")
-    .description("run dev")
-    .action(() => {
-        run("dev")
-    })
+// // 统一开发的 dev 和 build 命令
+// program
+//     .command("dev")
+//     .description("run dev")
+//     .action(() => {
+//         run("dev")
+//     })
 
-program
-    .command("build")
-    .description("run build")
-    .action(() => {
-        run("build")
-    })
+// program
+//     .command("build")
+//     .description("run build")
+//     .action(() => {
+//         run("build")
+//     })
 
-program
-    .command("test")
-    .description("run test")
-    .action(() => {
-        run("test")
-    })
+// program
+//     .command("test")
+//     .description("run test")
+//     .action(() => {
+//         run("test")
+//     })
 
 // program.command("add").description("run add").action(() => {
 //     run("add")
