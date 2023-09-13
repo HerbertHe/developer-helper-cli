@@ -49,36 +49,44 @@ program
 //     })
 
 // // 统一开发的 dev 和 build 命令
-// program
-//     .command("dev")
-//     .description("run dev")
-//     .action(() => {
-//         run("dev")
-//     })
+program
+    .command("dev [file]")
+    .description("run dev")
+    .action((file) => {
+        console.log(file)
+        run("dev", {
+            file: file
+        })
+    })
 
-// program
-//     .command("build")
-//     .description("run build")
-//     .action(() => {
-//         run("build")
-//     })
+program
+    .command("build")
+    .description("run build")
+    .option("-x, --cross", "cross platform build")
+    .option("-o, --output [output]", "output file name")
+    .action((options) => {
+        run("build", {
+            x: options.cross,
+            o: typeof options.output === "boolean" ? "" : options.output,
+        })
+    })
 
-// program
-//     .command("test")
-//     .description("run test")
-//     .action(() => {
-//         run("test")
-//     })
+program
+    .command("test")
+    .description("run test")
+    .action(() => {
+        run("test")
+    })
 
 // program.command("add").description("run add").action(() => {
 //     run("add")
 // })
 
-program
-    .command("install")
-    .description("run install")
-    .action(() => {
-        run("install")
-    })
+// program
+//     .command("install")
+//     .description("run install")
+//     .action(() => {
+//         run("install")
+//     })
 
 program.parse()

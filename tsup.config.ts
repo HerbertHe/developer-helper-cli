@@ -7,5 +7,6 @@ export const tsup = defineConfig({
 	outDir: "bin",
 	banner: {
 		"js": "#!/usr/bin/env node"
-	}
+	},
+	minify: process.env.NODE_ENV === "production"
 })

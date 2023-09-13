@@ -1,6 +1,6 @@
 {
   "name": "developer-helper-cli",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Developer Helper Cli Tool",
   "type": "module",
   "main": "bin/index.js",
@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "dev": "tsup --watch",
-    "build": "tsup",
+    "build": "cross-env NODE_ENV=production tsup",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -23,6 +23,7 @@
   "devDependencies": {
     "@types/inquirer": "^8.2.5",
     "@types/node": "^18.11.13",
+    "cross-env": "^7.0.3",
     "tsup": "^6.5.0"
   },
   "dependencies": {
