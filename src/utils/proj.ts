@@ -21,5 +21,5 @@ export const detectProj = () => {
         return ["rust", "cargo"]
     }
 
-    return ["any", "any"]
+    return ["", ""]
 }

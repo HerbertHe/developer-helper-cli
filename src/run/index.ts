@@ -14,7 +14,7 @@ interface ISubCommand {
     [key: string]: IPkgCommand
 }
 
-interface ICmd {
+export interface ICmd {
     [key: string]: ISubCommand
 }
 
@@ -38,7 +38,7 @@ const BUILD_IN_CMDS: ICmd = {
     },
     go: {
         go: {
-            dev: ["go", ["run", "main.go"]],
+            dev: ["go", ["run"]],
             build: ["go", ["build"]],
         },
     },
@@ -67,6 +67,7 @@ export const run = (
     run_args: IRunArgs = { x: false, o: "output", file: "" }
 ) => {
     // TODO 对发现操作进行适当屏蔽，抽象化解决，支持发现不支持命令
+    // TODO 支持用户自定义环境操作
     const [type, mgr] = detectProj()
     if (!Object.keys(cmds()).includes(type)) {
         logError("No support commands for the current project!")
@@ -78,9 +79,6 @@ export const run = (
         logError("No support commands for the current project!")
         return
     }
-
-    // TODO 需要有一种通用的方式抽象化参数
-    // TODO 支持 dev 命令指定执行文件的情况
 
     // TODO 进行边界情况处理，例如跨平台go语言的编译
     if (c === "build") {
@@ -103,6 +101,16 @@ export const run = (
     }
 
     const [cm, args] = cmd as TCmdArray
+
+    // TODO 需要有一种通用的方式抽象化参数
+    // TODO 支持 dev 命令指定执行文件的情况
+    if (c === "dev") {
+        if (!!run_args.file) {
+            runCmd(cm, [...args, run_args.file])
+            return
+        }
+    }
+
     logCmdTask(`${cm} ${args.join(" ")}`)
     runCmd(cm, args)
 }

@@ -7,6 +7,7 @@ import { createNewProject } from "./create"
 import { runStaticServer } from "./serve"
 import { generateDocs } from "./docs"
 import { run } from "./run"
+import { initDHCConfig, showDHCConfig } from "./config"
 
 program.name("dhc").description(description).version(version)
 
@@ -53,9 +54,8 @@ program
     .command("dev [file]")
     .description("run dev")
     .action((file) => {
-        console.log(file)
         run("dev", {
-            file: file
+            file: file,
         })
     })
 
@@ -76,6 +76,20 @@ program
     .description("run test")
     .action(() => {
         run("test")
+    })
+
+program
+    .command("config")
+    .description("show dhc config")
+    .action(() => {
+        showDHCConfig()
+    })
+
+program
+    .command("config init")
+    .description("initialize dhc config")
+    .action(() => {
+        initDHCConfig()
     })
 
 // program.command("add").description("run add").action(() => {
