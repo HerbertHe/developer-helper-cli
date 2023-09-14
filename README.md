@@ -1,5 +1,8 @@
 # developer-helper-cli
 
+[![version](https://img.shields.io/npm/v/developer-helper-cli.svg)](https://www.npmjs.com/package/developer-helper-cli)
+[![download](https://img.shields.io/npm/dm/developer-helper-cli.svg)](https://www.npmjs.com/package/developer-helper-cli)
+
 A Developer Helper Cli Tool🤔
 
 Before, I've written a cli tool for background developement for Nuco.Tech, called [nbc](https://open.nuco.tech/nuco-backend-cli/). It supports multi-platforms and really helps me with developing.
