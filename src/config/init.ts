@@ -1,6 +1,4 @@
 import { initConfig } from "../utils/config"
 
-export const initDHCConfig = () => {
-    // TODO 交互式配置config
-    return initConfig()
-}
+// TODO 交互式配置，对于空文件夹进行交互设置
+export const initDHCConfig = initConfig

@@ -1,5 +1,5 @@
 import { runCmd } from "../utils/cmd"
-import { logCmdTask, logError, logTask } from "../utils/log"
+import { logCmdTask, logError } from "../utils/log"
 import { detectProj } from "../utils/proj"
 import { readConfig } from "../utils/config"
 import { go_build } from "./go/build"
@@ -68,14 +68,35 @@ export const run = (
 ) => {
     // TODO 对发现操作进行适当屏蔽，抽象化解决，支持发现不支持命令
     // TODO 支持用户自定义环境操作
-    const [type, mgr] = detectProj()
-    if (!Object.keys(cmds()).includes(type)) {
+    let projEnv = ""
+    let projMgr = ""
+
+    const { project } = readConfig()
+
+    if (!!project && project.auto_detect === false) {
+        const { env, manager } = project
+        if (!!env && !!manager) {
+            projEnv = env
+            projMgr = manager
+        } else {
+            logError(
+                `The config option "project.auto_detect" is false, you need to set "project.env" and "project.manager" by yourself!`
+            )
+            return
+        }
+    } else {
+        const [type, mgr] = detectProj()
+        projEnv = type
+        projMgr = mgr
+    }
+
+    if (!Object.keys(cmds()).includes(projEnv)) {
         logError("No support commands for the current project!")
         return
     }
 
-    const cmdc = cmds()[type]
-    if (!Object.keys(cmdc).includes(mgr)) {
+    const cmdc = cmds()[projEnv]
+    if (!Object.keys(cmdc).includes(projMgr)) {
         logError("No support commands for the current project!")
         return
     }
@@ -83,13 +104,13 @@ export const run = (
     // TODO 进行边界情况处理，例如跨平台go语言的编译
     if (c === "build") {
         // 构建情况处理
-        if (type === "go") {
+        if (projEnv === "go") {
             go_build(run_args.x, run_args.o)
             return
         }
     }
 
-    const cmd = cmdc[mgr][c]
+    const cmd = cmdc[projMgr][c]
 
     if (Array.isArray(cmd[0])) {
         cmd.forEach((cd) => {

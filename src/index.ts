@@ -3,7 +3,6 @@ const program = new Command()
 import { version, description } from "../package.json"
 import { updateCommit } from "./commit"
 import { checkLocalEnv } from "./local"
-import { createNewProject } from "./create"
 import { runStaticServer } from "./serve"
 import { generateDocs } from "./docs"
 import { run } from "./run"
@@ -27,20 +26,14 @@ program
         updateCommit()
     })
 
-// 新建项目工程
-// program
-//     .command("create")
-//     .description("create new project")
-//     .action(() => {
-//         createNewProject()
-//     })
-
-// program
-//     .command("serve [p]")
-//     .description("create new static service")
-//     .action((p: string) => {
-//         runStaticServer(p)
-//     })
+program
+    .command("serve")
+    .option("-p, --port <port>", "set port")
+    .option("-d, --dir <dir>", "set dir")
+    .description("create new static service")
+    .action((option) => {
+        runStaticServer(option.port, option.dir)
+    })
 
 // program
 //     .command("docs")
@@ -80,16 +73,13 @@ program
 
 program
     .command("config")
-    .description("show dhc config")
-    .action(() => {
-        showDHCConfig()
-    })
-
-program
-    .command("config init")
-    .description("initialize dhc config")
-    .action(() => {
-        initDHCConfig()
+    .option("-i, --init", "initialize dhc config")
+    .action((option) => {
+        if (option.init) {
+            initDHCConfig()
+        } else {
+            showDHCConfig()
+        }
     })
 
 // program.command("add").description("run add").action(() => {

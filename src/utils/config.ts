@@ -9,6 +9,7 @@ import temp from "./temp.config.json"
 interface IDHCProjectConfig {
     env: string
     manager: string
+    auto_detect: boolean
 }
 
 interface IDHCConfig {
@@ -47,6 +48,7 @@ export const initConfig = () => {
         JSON.stringify({
             ...temp,
             project: {
+                ...temp.project,
                 env,
                 manager,
             },

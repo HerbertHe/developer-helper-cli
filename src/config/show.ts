@@ -7,7 +7,7 @@ export const showDHCConfig = () => {
 
     if (!dir.includes("dhc.config.json")) {
         logError(
-            "No `dhc.config.json` file found, maybe you want to run `dhc config init` to initialize for the currenct project first!"
+            "No `dhc.config.json` file found, maybe you want to run `dhc config -i` to initialize for the currenct project first!"
         )
         return
     }

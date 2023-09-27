@@ -1,6 +1,6 @@
 {
   "name": "developer-helper-cli",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Developer Helper Cli Tool",
   "type": "module",
   "main": "bin/index.js",
@@ -33,6 +33,8 @@
   "license": "MIT",
   "devDependencies": {
     "@types/inquirer": "^8.2.5",
+    "@types/koa": "^2.13.9",
+    "@types/koa-static": "^4.0.2",
     "@types/node": "^18.11.15",
     "cross-env": "^7.0.3",
     "tsup": "^6.5.0"
@@ -40,6 +42,8 @@
   "dependencies": {
     "chalk-pipe": "^6.0.0",
     "commander": "^9.4.1",
-    "inquirer": "^9.1.4"
+    "inquirer": "^9.1.4",
+    "koa": "^2.14.2",
+    "koa-static": "^5.0.0"
   }
 }
