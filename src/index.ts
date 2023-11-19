@@ -7,6 +7,8 @@ import { runStaticServer } from "./serve"
 import { generateDocs } from "./docs"
 import { run } from "./run"
 import { initDHCConfig, showDHCConfig } from "./config"
+import { logError, logResults, logSuccess } from "./utils/log"
+import { generateAvailablePort, checkIfPortAvailable } from "./port"
 
 program.name("dhc").description(description).version(version)
 
@@ -79,6 +81,31 @@ program
             initDHCConfig()
         } else {
             showDHCConfig()
+        }
+    })
+
+program
+    .command("port")
+    .option("-c, --check <port>", "check port available")
+    .option("-a, --available", "return a available port")
+    .action(async (option) => {
+        if (option.available === true) {
+            const p = await generateAvailablePort()
+            logSuccess(p.toString(), "Port")
+            return
+        }
+
+        if (!!option.check) {
+            if (
+                /^d+$/.test(option.check) ||
+                option.check < 1 ||
+                option.check > 65535
+            ) {
+                logError("Invalid port!")
+                return
+            } else {
+                checkIfPortAvailable(parseInt(option.check))
+            }
         }
     })
 

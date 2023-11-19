@@ -1,6 +1,6 @@
 {
   "name": "developer-helper-cli",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Developer Helper Cli Tool",
   "type": "module",
   "main": "bin/index.js",
